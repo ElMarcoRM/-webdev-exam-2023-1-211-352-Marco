@@ -339,7 +339,8 @@ modal_option2.addEventListener('change', function(e){
 let modal_sub = document.getElementById("modal_sub");
 modal_sub.addEventListener('click', function(e){
   let url = "http://exam-2023-1-api.std-900.ist.mospolytech.ru/api/orders";
-
+  option =  option ? 1 : 0;
+  option2 =  option2 ? 1 : 0;
   let formData = new FormData();
   formData.append('guide_id', guide_id);
   formData.append('route_id', route_id);

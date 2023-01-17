@@ -45,7 +45,7 @@ function get_requests(){
           td_n.innerHTML = i + 1;
 
           let td_name_route = document.createElement('td');
-          td_name_route.innerHTML = routes[item.route_id];
+          td_name_route.innerHTML = routes[item.route_id];          
           
           let td_date = document.createElement('td');
           td_date.innerHTML = item.date;
@@ -104,7 +104,7 @@ function pagination(){
     }
   }
 
-  //if(number_pages>1){
+  if(number_pages>1){
     let pagination_block = document.getElementById('requests_pagination');
     pagination_block.innerHTML = "";
     let requests_nav_li_prev = document.createElement('li');
@@ -125,7 +125,7 @@ function pagination(){
     requests_nav_li_last.className = "page-item pi_requests";
     requests_nav_li_last.innerHTML = '<a class="page-link" href="#">Следующая</a>';
     pagination_block.append(requests_nav_li_last);
-  //}
+  }
 
   let requests_nav_li_for_click = document.getElementsByClassName("pi_requests");
   for (let i = 0; i < requests_nav_li_for_click.length; i++) {
@@ -151,6 +151,7 @@ function click_request_view(){
     .then(response => response.json())
     .then(data => {
         if(data.error === undefined){
+            //console.log(data);
             document.getElementById("view_guide_name").innerHTML = data.name;
         }
         else{
