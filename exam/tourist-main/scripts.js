@@ -2,6 +2,7 @@ let api_key = "159c16ba-5792-4509-b4bb-434c511cd601";
 
 let routes = {};
 let guides = {};
+
 let page = 1;
 
 let guide_id = 0;
@@ -14,6 +15,8 @@ let people = 1;
 let option = false;
 let price = 0;
 let cost = 0;
+
+let objects = [];
 
 //Функция получения списка маршрутов, выводим таблицу и запоминаем список (массив routes)
 function get_routes(){
@@ -46,6 +49,18 @@ function get_routes(){
             td_object.innerHTML = item.mainObject.substring(0, 147) + "...";
             td_object.dataset.bsToggle = "tooltip";
             td_object.dataset.bsTitle = item.mainObject;
+
+
+
+            item.mainObject.split(' - ').forEach(function(item, i) {
+              console.log(item);
+              if(objects.indexOf(item) == -1){
+                objects.push(item);
+              }              
+            });
+
+
+
             new bootstrap.Tooltip(td_object);
           }
           else{
@@ -324,7 +339,7 @@ modal_sub.addEventListener('click', function(e){
   .catch(error => {
       console.error(error);
   });
- 
+
   let alert = document.getElementById("alert");
   alert.className = "row alert alert-warning";
   //alert.style.display = '';
