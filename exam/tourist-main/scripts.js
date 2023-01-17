@@ -14,6 +14,7 @@ let time = "12:00";
 let duration = 1;
 let people = 1;
 let option = false;
+let option2 = false;
 let price = 0;
 let cost = 0;
 
@@ -290,7 +291,13 @@ function click_guide_button(e){
 function get_price(){  
   let modal_price = document.getElementById("modal_price");
   
-  cost = (option === true) ? Number(price) * Number(duration) * Number(people) * 1.5 : Number(price) * Number(duration) * Number(people);
+  cost =  Number(price) * Number(duration) * Number(people);
+  if(option === true){
+    cost = cost * 1.3;
+  }
+  if(option2 === true){
+    cost = cost * 1.5;
+  }
   cost = Math.floor(cost);
   modal_price.innerHTML = cost;//.toLocaleString;
 }
@@ -322,6 +329,12 @@ modal_option.addEventListener('change', function(e){
   option = this.checked;
   get_price();
 });
+//изменение второй дополнительной опции
+let modal_option2 = document.getElementById("modal_option2");
+modal_option2.addEventListener('change', function(e){  
+  option2 = this.checked;
+  get_price();
+});
 //отправка заявки
 let modal_sub = document.getElementById("modal_sub");
 modal_sub.addEventListener('click', function(e){
@@ -335,7 +348,7 @@ modal_sub.addEventListener('click', function(e){
   formData.append('duration', duration);
   formData.append('id', guide_id + route_id);
   formData.append('optionFirst', option);
-  formData.append('optionSecond', false);
+  formData.append('optionSecond', option2);
   formData.append('persons', people);
   formData.append('price', cost);
   formData.append('student_id', 12345654321);

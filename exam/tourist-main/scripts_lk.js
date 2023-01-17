@@ -104,7 +104,7 @@ function pagination(){
     }
   }
 
-  if(number_pages>1){
+  //if(number_pages>1){
     let pagination_block = document.getElementById('requests_pagination');
     pagination_block.innerHTML = "";
     let requests_nav_li_prev = document.createElement('li');
@@ -125,7 +125,7 @@ function pagination(){
     requests_nav_li_last.className = "page-item pi_requests";
     requests_nav_li_last.innerHTML = '<a class="page-link" href="#">Следующая</a>';
     pagination_block.append(requests_nav_li_last);
-  }
+  //}
 
   let requests_nav_li_for_click = document.getElementsByClassName("pi_requests");
   for (let i = 0; i < requests_nav_li_for_click.length; i++) {
