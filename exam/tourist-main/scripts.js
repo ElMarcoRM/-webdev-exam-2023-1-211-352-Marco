@@ -1,7 +1,8 @@
 let api_key = "159c16ba-5792-4509-b4bb-434c511cd601";
 
-let routes = {};
-let guides = {};
+let routes = [];
+let routes_with_filter = [];
+let guides = [];
 
 let page = 1;
 
@@ -50,16 +51,12 @@ function get_routes(){
             td_object.dataset.bsToggle = "tooltip";
             td_object.dataset.bsTitle = item.mainObject;
 
-
-
             item.mainObject.split(' - ').forEach(function(item, i) {
-              console.log(item);
+              item = item.substring(0, 100);              
               if(objects.indexOf(item) == -1){
                 objects.push(item);
               }              
             });
-
-
 
             new bootstrap.Tooltip(td_object);
           }
@@ -82,7 +79,22 @@ function get_routes(){
           
           //console.log(item);
         });
-        pagination();
+        
+        let object_select = document.getElementById('object_select');
+        object_select.addEventListener('change', change_object, false);
+        object_select.innerHTML = "";
+        let option_first_o = document.createElement('option');
+        option_first_o.innerHTML = "Основной объект";
+        option_first_o.value = "";
+        object_select.append(option_first_o);
+        
+        for (let i = 0; i < objects.length; i++) {
+          let option = document.createElement('option');
+          option.innerHTML = objects[i];
+          option.value = objects[i];
+          object_select.append(option);
+        }          
+        pagination(routes);
       }
       else{
         console.log(data.error);
@@ -94,10 +106,10 @@ function get_routes(){
 }
 
 //функция пагинации для списка маршрутов
-function pagination(){
+function pagination(routes_for_pagination){
   let item_start = page * 10 - 9;
   let item_finish = page * 10;
-  routes.forEach(function(item, i, routes) {
+  routes_for_pagination.forEach(function(item, i, routes_for_pagination) {
     let tr = document.getElementById('route_tr_' + i);
     if(item_start <= (i+1) && (i+1) <= item_finish){
       tr.style.display = '';
@@ -106,7 +118,7 @@ function pagination(){
       tr.style.display = 'none';
     }
   });
-  let number_pages = Math.floor(routes.length/10) + 1;
+  let number_pages = Math.floor(routes_for_pagination.length/10) + 1;
   
   let pagination_block = document.getElementById('routes_pagination');
   pagination_block.innerHTML = "";
@@ -140,7 +152,12 @@ function click_routes_pagination(e){
   e.preventDefault();
   let data_page = this.getAttribute("data-id");
   page = Number(data_page);
-  pagination();
+  if(routes_with_filter.length > 0){
+    pagination(routes_with_filter);
+  }
+  else{
+    pagination(routes);
+  }  
 }
 
 //функция для кнопки выбора маршрута
@@ -362,6 +379,83 @@ function change_lang(){
     }
   }
 }
+
+//функция фильтрации маршрутов по объекту
+function change_object(){  
+  let obj = this.value;  
+  routes_with_filter = [];
+  if(obj != ""){
+    page = 1;
+    for (let i = 0; i < routes.length; i++) {
+      if((routes[i].mainObject.indexOf(obj) > 0)){        
+        routes_with_filter[i] = routes[i];
+      }
+    }
+    get_routes_with_filters(routes_with_filter);
+    pagination(routes_with_filter);
+  }
+  else{    
+    pagination(routes);
+  }
+}
+
+//функция вывода отфильтрованных маршрутов
+function get_routes_with_filters(routes_with_filter){
+  let tbody = document.getElementById('routes_tbody');
+  tbody.innerHTML = "";
+  routes_with_filter.forEach(function(item, i, routes_with_filter) {
+    let tr = document.createElement('tr');
+    tr.setAttribute('id', 'route_tr_' + i);
+    tr.clasName = "route_tr";
+    let td_name = document.createElement('td');
+    td_name.innerHTML = item.name;
+    let td_description = document.createElement('td');
+    if(item.description.length > 150){
+      td_description.innerHTML = item.description.substring(0, 147) + "...";
+      td_description.dataset.bsToggle = "tooltip";
+      td_description.dataset.bsTitle = item.description;
+      new bootstrap.Tooltip(td_description);
+    }
+    else{
+      td_description.innerHTML = item.description;
+    }
+    
+    let td_object = document.createElement('td');
+    if(item.mainObject.length > 150){
+      td_object.innerHTML = item.mainObject.substring(0, 147) + "...";
+      td_object.dataset.bsToggle = "tooltip";
+      td_object.dataset.bsTitle = item.mainObject;
+
+      item.mainObject.split(' - ').forEach(function(item, i) {
+        item = item.substring(0, 100);              
+        if(objects.indexOf(item) == -1){
+          objects.push(item);
+        }              
+      });
+
+      new bootstrap.Tooltip(td_object);
+    }
+    else{
+      td_object.innerHTML = item.mainObject;
+    }
+    let td_button = document.createElement('td');
+    td_button.dataset.id = i;
+    td_button.dataset.server_id = item.id;
+    td_button.dataset.name = item.name;
+    td_button.innerHTML = '<button class="btn btn-outline-primary btn-sm">Выбрать</button>';
+
+    td_button.addEventListener('click', click_route_button, false);
+
+    tr.append(td_name);
+    tr.append(td_description);
+    tr.append(td_object);
+    tr.append(td_button);
+    tbody.append(tr);
+    
+    //console.log(item);
+  });
+}
+
 
 //функция фильтрации гидов по опыту работы
 let guide_ot_input = document.getElementById("guide_ot");
