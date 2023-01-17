@@ -168,10 +168,10 @@ function click_request_view(){
     document.getElementById("view_duration").innerHTML = req.duration;
     document.getElementById("view_person").innerHTML = req.persons;
     if(req.optionFirst){
-        document.getElementById("view_option").innerHTML = "<b>Трансфер до ближайших станций метро после экскурсии</b>";
+        document.getElementById("view_option").innerHTML = "<b>Трансфер до ближайших станций метро после экскурсии</b><br>Стоимость увеличена на 30%";
     }
     if(req.optionSecond){
-        document.getElementById("view_option").innerHTML = "<b>Интерактивный путеводитель</b>";
+        document.getElementById("view_option2").innerHTML = "<b>Интерактивный путеводитель</b><br>Стоимость увеличена в 1.5 раза";
     }
 
     document.getElementById("view_cost").innerHTML = req.price;
