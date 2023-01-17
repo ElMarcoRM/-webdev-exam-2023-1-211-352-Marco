@@ -456,6 +456,32 @@ function get_routes_with_filters(routes_with_filter){
   });
 }
 
+//функция поиска маршрутов
+let input_routes_search = document.getElementById("routes_search");
+input_routes_search.addEventListener('input', function(e){
+  search = this.value;
+  routes_with_filter = [];
+
+  if(search != ""){
+
+    page = 1;
+    for (let i = 0; i < routes.length; i++) {
+
+      if((routes[i].mainObject.indexOf(search) != -1) || (routes[i].name.indexOf(search) != -1)|| (routes[i].description.indexOf(search)  != -1)){        
+        routes_with_filter[i] = routes[i];
+      }
+    }
+
+    get_routes_with_filters(routes_with_filter);
+    pagination(routes_with_filter);
+
+  }
+  else{    
+    pagination(routes);
+  }
+
+
+});
 
 //функция фильтрации гидов по опыту работы
 let guide_ot_input = document.getElementById("guide_ot");
