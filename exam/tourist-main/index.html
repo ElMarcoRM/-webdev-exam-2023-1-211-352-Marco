@@ -1,193 +1,197 @@
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Сайт для поиска пешеходного туристического маршрута по Москве и оформления заявок на предоставление услуг гида">
-    <title>Услуги гида в Москве - Главная</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  </head>
-  <body>
-    <header>
-      <div class="container py-3">
-        <div class="row">
-          <a class="col-lg-3" href="/">
-            <img src="logo.jpg">
-          </a>
-          <div class="col-lg-7">
-            <h2>Турист</h2>
-            <p class="lead font-weight-normal">Экскурсии по Москве</p>
-          </div>
-          <a class="col-lg-2" href="/lk.html">Личный кабинет</a>
-        </div>
-      </div>
-    </header>    
-    <main class="container">
-      <div style="display:none;" id="alert" class="row alert alert-warning" role="alert">
-        <span id="message"></span>      
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <img src="main_banner.jpg" class="img-fluid">
-        </div>
-        <div class="col-md-6 border border-dark">
-          <p>Одна из лучших туристических компаний России</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-            <h1 class="text-center py-3">Что такое Lorem Ipsum?</h1>            
-            <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</p>
-            <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</p>
-            <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</p>
-            <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <h2 class="py-3">Список пешеходных маршрутов</h2>
-          <div class="row py-3">
-            <div class="col-md-4">
-              <form class="d-flex">
-                <input class="form-control mr-2" type="search" placeholder="Поиск по названию">
-                <!--<button class="btn btn-outline-success" type="submit">Искать</button>-->
-              </form>
-            </div>
-            <div class="col-md-8">
-              <form class="d-flex">
-                <select class="form-select">
-                  <option disable>Основной объект</option>
-                  <option value="1">Первый</option>
-                  <option value="2">Второй</option>
-                  <option value="3">Третий</option>
-                </select>
-              </form>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <table class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th>Название</th>
-                    <th>Описание</th>
-                    <th>Основные объекты</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody id="routes_tbody">
-
-                </tbody>
-              </table>
-              <nav>
-                <ul class="pagination" id="routes_pagination">
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12" id="guides_list" style="display:none;">
-          <h2 class="py-3">Доступные гиды по маршруту <span id="route_name">Название маршрута</span></h2>
-          <div class="row py-3">
-            <div class="col-md-4">
-              <form class="d-flex">
-                <select class="form-select" id="lang_select">
-                </select>
-              </form>
-            </div>
-            <div class="col-md-8">
-              <form class="d-flex">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Сайт для поиска пешеходного туристического маршрута по Москве и оформления заявок на предоставление услуг гида">
+        <title>Услуги гида в Москве - Главная</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <link href="custom.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div class="container py-3">
                 <div class="row">
-                  <div class="col-md-3">Опыт работы</div>
-                  <div class="col-md-4"><input class="form-control" type="search" placeholder="от"></div>
-                  <div class="col-md-4"><input class="form-control" type="search" placeholder="до"></div>
+                    <a class="col-lg-3" href="/">
+                        <img src="logo.jpg">
+                    </a>
+                    <div class="col-lg-7">
+                        <h2>Турист</h2>
+                        <p class="lead font-weight-normal">Экскурсии по Москве</p>
+                    </div>
+                    <a class="col-lg-2" href="/lk.html">Личный кабинет</a>
                 </div>
-              </form>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <table class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th>ФИО</th>
-                    <th>Языки</th>
-                    <th>Опыт работы</th>
-                    <th>Стоимость услуг в час</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody id="guides_tbody">
-
-
-                </tbody>
-              </table>
+        </header>    
+        <main class="container">
+            <div id="alert" class="row alert alert-warning custom-hidden" role="alert">
+                <span id="message"></span>      
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalLabel">Оформление заявки</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="main_banner.jpg" class="img-fluid">
+                </div>
+                <div class="col-md-6 border border-dark">
+                    <p>Одна из лучших туристических компаний России</p>
+                </div>
             </div>
-            <div class="modal-body">
-              <div class="row">
-                <p><b>ФИО гида: </b><span id="modal_guide_name"></span></p>
-                <p><b>Название маршрута: </b><span id="modal_route_name"></span></p>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <label for="modal_date" class="form-label">Дата экскурсии:</label>
-                  <input class="form-control" type="date" id="modal_date">
-                </div>
-                <div class="col-md-6">
-                  <label for="modal_time" class="form-label">Время начала:</label>
-                  <input class="form-control" type="time" id="modal_time">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <label for="modal_duration" class="form-label">Длительность экскурсии:</label>
-                  <select class="form-select" aria-label="Длительность экскурсии" id="modal_duration">
-                    <option value="1" selected>1 час</option>
-                    <option value="2">2 часа</option>
-                    <option value="3">3 часа</option>
-                  </select>
-                </div>
-                <div class="col-md-6">                  
-                  <label for="modal_people" class="form-label">Количество человек:</label>
-                  <input value="1" class="form-control" type="number" id="modal_people">
-                </div>
-              </div>
-              <div class="row py-3">
+            <div class="row">
                 <div class="col-md-12">
-                <input class="form-check-input" type="checkbox" value="1" id="modal_option">
-                <label class="form-check-label" for="modal_option">Интерактивный путеводитель:</label>
-              </div>
-              </div>
-              <div class="row">
-                <p><b>Итоговая стоимость: </b><span id="modal_price"></span> р.</p>
-              </div>
+                    <h1 class="text-center py-3">Что такое Lorem Ipsum?</h1>            
+                    <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</p>
+                    <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</p>
+                    <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</p>
+                    <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.</p>
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
-              <button type="button" id="modal_sub" class="btn btn-primary" data-bs-dismiss="modal">Отправить</button>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="py-3">Список пешеходных маршрутов</h2>
+                    <div class="row py-3">
+                        <div class="col-md-4">
+                            <form class="d-flex">
+                                <input class="form-control mr-2" type="search" placeholder="Поиск по названию">
+                                <!--<button class="btn btn-outline-success" type="submit">Искать</button>-->
+                            </form>
+                        </div>
+                        <div class="col-md-8">
+                            <form class="d-flex">
+                                <select class="form-select">
+                                    <option disable>Основной объект</option>
+                                    <option value="1">Первый</option>
+                                    <option value="2">Второй</option>
+                                    <option value="3">Третий</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Название</th>
+                                        <th>Описание</th>
+                                        <th>Основные объекты</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="routes_tbody">
+
+                                </tbody>
+                            </table>
+                            <nav>
+                                <ul class="pagination" id="routes_pagination">
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 custom-hidden" id="guides_list">
+                    <h2 class="py-3">Доступные гиды по маршруту <span id="route_name">Название маршрута</span></h2>
+                    <div class="row py-3">
+                        <div class="col-md-4">
+                            <form class="d-flex">
+                                <select class="form-select" id="lang_select">
+                                </select>
+                            </form>
+                        </div>
+                        <div class="col-md-8">
+                            <form class="d-flex">
+                                <div class="row">
+                                    <div class="col-md-3">Опыт работы</div>
+                                    <div class="col-md-4">
+                                        <input id="guide_ot" class="form-control" type="search" placeholder="от">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input id="guide_co" class="form-control" type="search" placeholder="до">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>ФИО</th>
+                                        <th>Языки</th>
+                                        <th>Опыт работы</th>
+                                        <th>Стоимость услуг в час</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="guides_tbody">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </main>    
-    <footer>
-      <div class="container py-3">
-        <p class="col-md-4 mb-0 text-muted">© 2023 Турист</p>      
-      </div>      
-    </footer>
-    <script src="popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="scripts.js"></script>
-  </body>
+            <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel">Оформление заявки</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <p><b>ФИО гида: </b><span id="modal_guide_name"></span></p>
+                                <p><b>Название маршрута: </b><span id="modal_route_name"></span></p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="modal_date" class="form-label">Дата экскурсии:</label>
+                                    <input class="form-control" type="date" id="modal_date">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="modal_time" class="form-label">Время начала:</label>
+                                    <input class="form-control" type="time" id="modal_time">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="modal_duration" class="form-label">Длительность экскурсии:</label>
+                                    <select class="form-select" aria-label="Длительность экскурсии" id="modal_duration">
+                                        <option value="1" selected>1 час</option>
+                                        <option value="2">2 часа</option>
+                                        <option value="3">3 часа</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">                  
+                                    <label for="modal_people" class="form-label">Количество человек:</label>
+                                    <input value="1" class="form-control" type="number" id="modal_people">
+                                </div>
+                            </div>
+                            <div class="row py-3">
+                                <div class="col-md-12">
+                                    <input class="form-check-input" type="checkbox" value="1" id="modal_option">
+                                    <label class="form-check-label" for="modal_option">Интерактивный путеводитель:</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p><b>Итоговая стоимость: </b><span id="modal_price"></span> р.</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отменить</button>
+                            <button type="button" id="modal_sub" class="btn btn-primary" data-bs-dismiss="modal">Отправить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>    
+        <footer>
+            <div class="container py-3">
+                <p class="col-md-4 mb-0 text-muted">© 2023 Турист</p>      
+            </div>      
+        </footer>
+        <script src="popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <script src="scripts.js"></script>
+    </body>
 </html>

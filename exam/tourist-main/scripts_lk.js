@@ -242,7 +242,8 @@ document.getElementById("delete_sub").addEventListener('click', function(){
 //функция показа сообщения о действии
 function message(text){
   let alert = document.getElementById("alert");
-  alert.style.display = '';
+  alert.className = "row alert alert-warning";
+  //alert.style.display = '';
   //alert.style.display = 'none';
   let message = document.getElementById("message");
   message.innerHTML = text;  

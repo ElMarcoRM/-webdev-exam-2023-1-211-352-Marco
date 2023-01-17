@@ -158,12 +158,15 @@ function get_guides(route_id){
   .then(response => response.json())
   .then(data => {      
       if(data.error === undefined){
-        let guides_list = document.getElementById('guides_list'); 
-        guides_list.style.display = '';
+        let guides_list = document.getElementById('guides_list');
+        guides_list.className = "col-md-12";        
+        //guides_list.style.display = '';
         let tbody = document.getElementById('guides_tbody');
         tbody.innerHTML = "";
         guides = data;
         let langs = [];
+        let guide_ot = 0;
+        let guide_do = 100;
         data.forEach(function(item, i, data) {
 
           let tr = document.createElement('tr');
@@ -185,7 +188,7 @@ function get_guides(route_id){
           td_price.innerHTML = item.pricePerHour;
           
           let td_button = document.createElement('td');
-          td_button.dataset.id = i;
+          td_button.dataset.id = item.id;
           td_button.dataset.name = item.name;
           td_button.dataset.price = item.pricePerHour;
           td_button.dataset.server_id = item.id;
@@ -256,6 +259,7 @@ function get_price(){
   let modal_price = document.getElementById("modal_price");
   
   cost = (option === true) ? Number(price) * Number(duration) * Number(people) * 1.5 : Number(price) * Number(duration) * Number(people);
+  cost = Math.floor(cost);
   modal_price.innerHTML = cost;//.toLocaleString;
 }
 //изменение даты
@@ -322,7 +326,8 @@ modal_sub.addEventListener('click', function(e){
   });
  
   let alert = document.getElementById("alert");
-  alert.style.display = '';
+  alert.className = "row alert alert-warning";
+  //alert.style.display = '';
   //alert.style.display = 'none';
   let message = document.getElementById("message");
   message.innerHTML = "Заявка успешно отправлена";  
@@ -343,4 +348,10 @@ function change_lang(){
   }
 }
 
+//функция фильтрации гидов по опыту работы
+let guide_ot_input = document.getElementById("guide_ot");
+guide_ot_input.addEventListener('change', function(e){
+  guide_ot = this.value;
+  get_price();
+});
 get_routes();
